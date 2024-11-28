@@ -8,7 +8,7 @@ namespace Talabate.Core.Entites
 {
     internal class Product
     {
-        
+        //
         public int id { get; set; }
         public string Name { get; set; }
         public string Describtion { get; set; }
