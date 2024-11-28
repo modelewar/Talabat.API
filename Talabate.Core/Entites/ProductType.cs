@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Talabate.Core.Entites
 {
-    internal class ProductType:BaseEntity
+    public class ProductType:BaseEntity
     {
          
         public string Name { get; set; }
