@@ -25,7 +25,7 @@ namespace Talabat.Repository.Data.Configurations
                 .IsRequired()
                 .HasMaxLength(100);
             
-            builder.Property(p => p.Describtion).IsRequired();
+            builder.Property(p => p.Description).IsRequired();
 
             builder.Property(p => p.PictureUrl).IsRequired();
 

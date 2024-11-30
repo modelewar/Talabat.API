@@ -40,6 +40,8 @@ namespace Talabat.APIs
                 var dbContext = Services.GetRequiredService<StoreContext>();
                 //Ask CLR For Creating Object from DbContext Explicitly 
                 await dbContext.Database.MigrateAsync(); //Update Database
+                await StoreContextSeed.SeedAsync(dbContext);
+
             }
             catch (Exception ex)
             {
