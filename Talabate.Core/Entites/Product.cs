@@ -8,6 +8,7 @@ namespace Talabate.Core.Entites
 {
     public class Product : BaseEntity
     {
+        
 
         public string Name { get; set; }
         public string Describtion { get; set; }

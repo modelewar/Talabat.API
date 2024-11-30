@@ -26,17 +26,28 @@ namespace Talabat.APIs
             #endregion
             var app = builder.Build();
             #region Update-Database
-             
+
             //StoreContext dbContext = new StoreContext(); //Invalide
             //await dbContext.Database.MigrateAsync();
 
-            using var Scope = app.Services.CreateScope();
-            //Group Of Services LifeTime Scooped
-            var Services = Scope.ServiceProvider;
-            //Services ItSelf
-            var dbContext = Services.GetRequiredService<StoreContext>();
-            //Ask CLR For Creating Object from DbContext Explicitly 
-            await dbContext.Database.MigrateAsync(); //Update Database
+                using var Scope = app.Services.CreateScope();
+                //Group Of Services LifeTime Scooped
+                var Services = Scope.ServiceProvider;
+                //Services ItSelf
+                 var LoggerFactory = Services.GetRequiredService<ILoggerFactory>();
+            try
+            {
+                var dbContext = Services.GetRequiredService<StoreContext>();
+                //Ask CLR For Creating Object from DbContext Explicitly 
+                await dbContext.Database.MigrateAsync(); //Update Database
+            }
+            catch (Exception ex)
+            {
+
+                var Logger = LoggerFactory.CreateLogger<Program>();
+                Logger.LogError(ex, "An error occurred while migrating the database.");
+            }
+
             #endregion
 
             #region // Configure the HTTP request pipeline.MiddelWars
@@ -45,6 +56,7 @@ namespace Talabat.APIs
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
+            
 
             app.UseHttpsRedirection();
 
