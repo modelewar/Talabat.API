@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Talabate.Core.Entites
+namespace Talabate.Core.Repositories
 {
-    public class BaseEntity
+    internal interface IGenaricRepository
     {
 
-        public int Id { get; set; }
     }
 }
