@@ -12,7 +12,6 @@ namespace Talabat.Repository.Data
     {
         public static async Task SeedAsync(StoreContext dbContext)
         {
-
             if (!dbContext.ProductBrands.Any())
             {
                 var BrandsData = File.ReadAllText("../Talabat.Repository/Data/DataSeed/brands.json");

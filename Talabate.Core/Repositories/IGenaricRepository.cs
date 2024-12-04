@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Talabate.Core.Entites;
 
 namespace Talabate.Core.Repositories
 {
-    internal interface IGenaricRepository
+    public interface IGenaricRepository<T> where T : BaseEntity
     {
-
+       Task <IEnumerable<T>> GetAllAsync();
+       Task<T> GetByIdAsync(int id);
+ 
     }
 }
